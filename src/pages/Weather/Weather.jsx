@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { API } from '../../API/weatherApi'
 import classes from './Weather.module.css'
 import exampleJson from '../../API/example.json'
+import { WiDaySunny, WiDegrees, WiRaindrop, WiStrongWind, WiUmbrella } from 'weather-icons-react'
 
 
 const Weather = () => {
@@ -10,7 +11,14 @@ const Weather = () => {
     const [city, setCity] = useState('');
     const [isCelsius, setIsCelsius] = useState(true)
     const [response, setResponse] = useState(exampleJson)
-    console.log(response)
+
+    const [width, setWidth] = useState(10)
+    const span = useRef();
+
+    useEffect(() => {
+        setWidth(span.current.offsetWidth);
+    }, [city]);
+
     // const [response, setResponse] = useState(null)
 
     // useEffect(() => {
@@ -107,26 +115,32 @@ const Weather = () => {
 
                 <div className={classes.Weather_input}>
 
-                    <span>Right now in </span>
-                    <input type='text' onChange={handleChange} />
-                    <span>its {API_DATA.current.condition.toLowerCase()}</span>
+                    <span className={classes.Weather__input_text}>Right now in </span>
+                    <span ref={span} id={classes.hideElem}>{city}</span>
+                    <input type="text" style={{ width }} autoFocus onChange={handleChange} />
+                    {/* <input type='text' onChange={handleChange} /> */}
+                    <span className={classes.Weather__input_text}>, it's {API_DATA.current.condition.toLowerCase()}</span>
                 </div>
                 {(response !== null && (API_DATA.cityName.toUpperCase() === city.toUpperCase()))
                     ?
-                    <div>
-                        <div className={classes.Weather_data_container}>
+                    <div className={classes.Weather_data_container}>
+                        <div className={classes.Weather_current_container}>
                             <div>
-                                <img src={API_DATA.current.iconUrl}></img>
+                                <img
+                                    style={{scale: '200%'}}
+                                    src={API_DATA.current.iconUrl}
+                                ></img>
                             </div>
                             <div>{
                                 isCelsius
                                     ?
                                     API_DATA.current.tempC
                                     :
-                                    API_DATA.current.tempF}
+                                    API_DATA.current.tempF}°
+                                {/* <WiDegrees size={48} color='#000' /> */}
                             </div>
                             <div>
-                                <div>
+                                <div><WiStrongWind size={24} color='#000' />
                                     {
                                         isCelsius
                                             ?
@@ -135,11 +149,11 @@ const Weather = () => {
                                             `${API_DATA.current.windMph} mph`
                                     }
                                 </div>
-                                <div>{API_DATA.current.humidity} PERC</div>
-                                <div>{API_DATA.current.chanceOfRain} RAIN</div>
+                                <div><WiUmbrella size={24} color='#000' /> {API_DATA.current.humidity} %</div>
+                                <div><WiRaindrop size={24} color='#000' />{API_DATA.current.chanceOfRain} %</div>
                             </div>
                         </div>
-                        <div className={classes.Weather_days_container}>
+                        <div className={classes.Weather_forecast_container}>
                             <div>
                                 <div>
                                     <img
@@ -180,7 +194,7 @@ const Weather = () => {
                         </div>
                     </div>
                     :
-                    <div>emplts</div>
+                    <div className={classes.Weather_data_container}>empty window</div>
                 }
             </div>
 

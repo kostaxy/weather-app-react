@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anek Odia', Roboto, sans-serif !important;
+}
 body {
     background-color: #a5e0f1;
 }

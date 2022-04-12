@@ -2,24 +2,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     min-height: 500px;
     margin: auto;
     width: 800px;
     background-color: #fff;
 }
-.Weather__container > * > * {
-    margin: 10px;
-}
-
 .Weather_data_container {
+    height: 300px;
+}
+
+.Weather_current_container {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.Weather_days_container {
+.Weather_forecast_container {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.Weather_input>input {
+    border: 0;
+    padding: 0px 10px 0px 10px;
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    font-weight: 700;
+    height: 22px;
+    min-width: 1px;
+}
+
+.Weather__input_text {
+    font-size: 20px;
+    color: gray;
+}
+
+.Weather_input>textarea:focus,
+input:focus {
+    outline: none
+}
+
+#hideElem {
+    font-size: 20px;
+    font-weight: 700;
+    position: absolute;
+    opacity: 0;
+    z-index: -100;
+    white-space: pre;
 }
