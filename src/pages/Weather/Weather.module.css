@@ -6,16 +6,52 @@
     min-height: 500px;
     margin: auto;
     width: 800px;
-    background-color: #fff;
+    background-color: #fff;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .Weather_data_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
     height: 300px;
+    justify-content: center;
 }
 
 .Weather_current_container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.Current_ancillary__wrapper {
+    /* width: 100px; */
+}
+
+.Current_ancillary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Current_ancillary > div {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.Current_icon {
+    /* -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    -webkit-transform: scale(2);
+    transform: scale(2); */
+
+}
+
+.Current_temp {
+    font-size: 80px;
+    color: #000;
+    font-weight: 200;
 }
 
 .Weather_forecast_container {
@@ -24,19 +60,28 @@
     align-items: center;
 }
 
+.Weather_forecast{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+}
+
 .Weather_input>input {
     border: 0;
-    padding: 0px 10px 0px 10px;
     border-bottom: 1px solid #ccc;
     font-size: 20px;
     font-weight: 700;
     height: 22px;
     min-width: 1px;
+    color: #000;
+    text-align: center;
+    transition: all 0.15s ease;
 }
 
 .Weather__input_text {
     font-size: 20px;
-    color: gray;
 }
 
 .Weather_input>textarea:focus,
@@ -46,9 +91,22 @@ input:focus {
 
 #hideElem {
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 800;
     position: absolute;
     opacity: 0;
     z-index: -100;
     white-space: pre;
+}
+
+.Choose_btn__container {
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+}
+.Choose_btn {
+    margin: 0px 5px 0 8px;
+    cursor: pointer;
+}
+.Choose_btn .active {
+    color: #000;
 }

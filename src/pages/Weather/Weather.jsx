@@ -12,11 +12,11 @@ const Weather = () => {
     const [isCelsius, setIsCelsius] = useState(true)
     const [response, setResponse] = useState(exampleJson)
 
-    const [width, setWidth] = useState(10)
+    const [width, setWidth] = useState(0)
     const span = useRef();
 
     useEffect(() => {
-        setWidth(span.current.offsetWidth);
+        setWidth(span.current.offsetWidth + 20);
     }, [city]);
 
     // const [response, setResponse] = useState(null)
@@ -79,30 +79,36 @@ const Weather = () => {
         API_DATA = {
             cityName: response.data.location.name,
             current: {
-                iconUrl: 'https:' + response.data.current.condition.icon,
+                iconUrl: 'https:' + response.data.current.condition.icon.replace("64x64", "128x128"),
                 condition: response.data.current.condition.text,
-                windKph: response.data.current.wind_kph,
-                windMph: response.data.current.wind_mph,
+                windKph: response.data.current.wind_kph.toFixed(),
+                windMph: response.data.current.wind_mph.toFixed(),
                 humidity: response.data.current.humidity,
-                tempC: response.data.current.temp_c,
-                tempF: response.data.current.temp_f,
+                tempC: response.data.current.temp_c.toFixed(),
+                tempF: response.data.current.temp_f.toFixed(),
                 chanceOfRain: response.data.forecast.forecastday[0].day.daily_chance_of_rain,
             },
             tomorrow: {
                 iconUrl: response.data.forecast.forecastday[1].day.condition.icon,
-                minTempC: response.data.forecast.forecastday[1].day.mintemp_c,
-                minTempF: response.data.forecast.forecastday[1].day.mintemp_f,
-                maxTempC: response.data.forecast.forecastday[1].day.maxtemp_c,
-                maxTempF: response.data.forecast.forecastday[1].day.maxtemp_f,
-                date: response.data.forecast.forecastday[1].date,
+                minTempC: response.data.forecast.forecastday[1].day.mintemp_c.toFixed(),
+                minTempF: response.data.forecast.forecastday[1].day.mintemp_f.toFixed(),
+                maxTempC: response.data.forecast.forecastday[1].day.maxtemp_c.toFixed(),
+                maxTempF: response.data.forecast.forecastday[1].day.maxtemp_f.toFixed(),
+                date:
+                    ('0' + new Date(response.data.forecast.forecastday[1].date).getDate()).slice(-2)
+                    + '.' +
+                    ('0' + (new Date(response.data.forecast.forecastday[1].date).getMonth() + 1)).slice(-2),
             },
             afterTomorrow: {
                 iconUrl: response.data.forecast.forecastday[2].day.condition.icon,
-                minTempC: response.data.forecast.forecastday[2].day.mintemp_c,
-                minTempF: response.data.forecast.forecastday[2].day.mintemp_f,
-                maxTempC: response.data.forecast.forecastday[2].day.maxtemp_c,
-                maxTempF: response.data.forecast.forecastday[2].day.maxtemp_f,
-                date: response.data.forecast.forecastday[2].date,
+                minTempC: response.data.forecast.forecastday[2].day.mintemp_c.toFixed(),
+                minTempF: response.data.forecast.forecastday[2].day.mintemp_f.toFixed(),
+                maxTempC: response.data.forecast.forecastday[2].day.maxtemp_c.toFixed(),
+                maxTempF: response.data.forecast.forecastday[2].day.maxtemp_f.toFixed(),
+                date:
+                    ('0' + new Date(response.data.forecast.forecastday[2].date).getDate()).slice(-2)
+                    + '.' +
+                    ('0' + (new Date(response.data.forecast.forecastday[2].date).getMonth() + 1)).slice(-2),
             }
         }
         : API_DATA = {}
@@ -119,7 +125,16 @@ const Weather = () => {
                     <span ref={span} id={classes.hideElem}>{city}</span>
                     <input type="text" style={{ width }} autoFocus onChange={handleChange} />
                     {/* <input type='text' onChange={handleChange} /> */}
-                    <span className={classes.Weather__input_text}>, it's {API_DATA.current.condition.toLowerCase()}</span>
+                    <span className={classes.Weather__input_text}>
+
+                        {
+                            (response !== null && (API_DATA.cityName.toUpperCase() === city.toUpperCase()))
+                                ?
+                                `, it's ${API_DATA.current.condition.toLowerCase()}`
+                                :
+                                `, none info :(`
+                        }
+                    </span>
                 </div>
                 {(response !== null && (API_DATA.cityName.toUpperCase() === city.toUpperCase()))
                     ?
@@ -127,34 +142,56 @@ const Weather = () => {
                         <div className={classes.Weather_current_container}>
                             <div>
                                 <img
-                                    style={{scale: '200%'}}
+                                    className={classes.Current_icon}
                                     src={API_DATA.current.iconUrl}
                                 ></img>
                             </div>
-                            <div>{
-                                isCelsius
-                                    ?
-                                    API_DATA.current.tempC
-                                    :
-                                    API_DATA.current.tempF}°
-                                {/* <WiDegrees size={48} color='#000' /> */}
+                            <div className={classes.Current_temp}>
+                                {
+                                    isCelsius
+                                        ?
+                                        API_DATA.current.tempC
+                                        :
+                                        API_DATA.current.tempF
+                                }°
                             </div>
-                            <div>
-                                <div><WiStrongWind size={24} color='#000' />
-                                    {
-                                        isCelsius
-                                            ?
-                                            `${API_DATA.current.windKph} kph`
-                                            :
-                                            `${API_DATA.current.windMph} mph`
-                                    }
+                            <div className={classes.Current_ancillary__wrapper}>
+                                <div className={classes.Current_ancillary}>
+                                    <WiStrongWind size={32} color='#000' />
+                                    <div>
+                                        {
+                                            isCelsius
+                                                ?
+                                                API_DATA.current.windKph
+                                                :
+                                                API_DATA.current.windMph
+                                        }
+                                    </div>
+                                    <div>
+                                        {
+                                            isCelsius
+                                                ?
+                                                ` km/h`
+                                                :
+                                                ` mph`
+                                        }
+                                    </div>
                                 </div>
-                                <div><WiUmbrella size={24} color='#000' /> {API_DATA.current.humidity} %</div>
-                                <div><WiRaindrop size={24} color='#000' />{API_DATA.current.chanceOfRain} %</div>
+                                <div className={classes.Current_ancillary}>
+                                    <WiUmbrella size={32} color='#000' />
+                                    <div>{API_DATA.current.humidity}</div>
+                                    <div>%</div>
+                                </div>
+                                <div className={classes.Current_ancillary}>
+                                    <WiRaindrop size={32} color='#000' />
+                                    <div>
+                                        {API_DATA.current.chanceOfRain} </div>
+                                    <div>%</div>
+                                </div>
                             </div>
                         </div>
                         <div className={classes.Weather_forecast_container}>
-                            <div>
+                            <div className={classes.Weather_forecast}>
                                 <div>
                                     <img
                                         src={API_DATA.tomorrow.iconUrl}
@@ -163,14 +200,14 @@ const Weather = () => {
                                 <div>{
                                     isCelsius
                                         ?
-                                        `${API_DATA.tomorrow.minTempC}-${API_DATA.tomorrow.maxTempC}`
+                                        `${API_DATA.tomorrow.minTempC}°/${API_DATA.tomorrow.maxTempC}°`
                                         :
-                                        `${API_DATA.tomorrow.minTempF}-${API_DATA.tomorrow.maxTempF}`
+                                        `${API_DATA.tomorrow.minTempF}°/${API_DATA.tomorrow.maxTempF}°`
                                 }
                                 </div>
                                 <div>{API_DATA.tomorrow.date}</div>
                             </div>
-                            <div>
+                            <div className={classes.Weather_forecast}>
                                 <div>
                                     <img
                                         src={response.data.forecast.forecastday[2].day.condition.icon}
@@ -179,22 +216,23 @@ const Weather = () => {
                                 <div>{
                                     isCelsius
                                         ?
-                                        `${API_DATA.afterTomorrow.minTempC}-${API_DATA.afterTomorrow.maxTempC}`
+                                        `${API_DATA.afterTomorrow.minTempC}°/${API_DATA.afterTomorrow.maxTempC}°`
                                         :
-                                        `${API_DATA.afterTomorrow.minTempF}-${API_DATA.afterTomorrow.maxTempF}`
+                                        `${API_DATA.afterTomorrow.minTempF}°/${API_DATA.afterTomorrow.maxTempF}°`
                                 }
                                 </div><div>{API_DATA.afterTomorrow.date}</div>
                             </div>
 
                         </div>
 
-                        <div>
-                            <button onClick={() => setIsCelsius(true)}>C</button>
-                            <button onClick={() => setIsCelsius(false)}>F</button>
+                        <div className={classes.Choose_btn__container}>
+                            <div className={classes.Choose_btn} onClick={() => setIsCelsius(true)}>C°</div>
+                            <div>|</div>
+                            <div className={classes.Choose_btn} onClick={() => setIsCelsius(false)}>F°</div>
                         </div>
                     </div>
                     :
-                    <div className={classes.Weather_data_container}>empty window</div>
+                    <div className={classes.Weather_data_container}>Enter city to get weather :)</div>
                 }
             </div>
 
