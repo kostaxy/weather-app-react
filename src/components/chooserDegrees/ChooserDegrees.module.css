@@ -1,0 +1,13 @@
+.Choose_btn__container {
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    padding-top: 55px;
+}
+.Choose_btn {
+    margin: 0px 5px 0 8px;
+    cursor: pointer;
+}
+.active {
+    color: #000;
+}
