@@ -1,0 +1,10 @@
+
+.Current_ancillary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Current_ancillary > div {
+    font-size: 20px;
+    margin-left: 5px;
+}

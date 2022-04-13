@@ -1,0 +1,18 @@
+.Weather_current_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.Current_icon {
+    width: 128px;
+}
+
+.Current_temp {
+    font-size: 80px;
+    color: #000;
+    font-weight: 200;
+}

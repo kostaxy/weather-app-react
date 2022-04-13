@@ -1,0 +1,24 @@
+.Weather_forecast{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+}
+
+
+.Forecast_icon{
+    width: 48px;
+}
+
+
+
+.Forecast_temp {
+    font-size: 20px;
+}
+
+
+.Forecast_date {
+    font-size: 12px;
+    font-weight: 500;
+}

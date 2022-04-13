@@ -279,7 +279,7 @@ const iconCode = [
 export function getIconSrcByCode(code, isDay) {
     for (let i = 0; i < iconCode.length; i++) {
         if (iconCode[i].code === code) {
-            if (iconCode[i].hasOwnProperty('isDay') && iconCode[i].isDay == isDay) {
+            if (iconCode[i].hasOwnProperty('isDay') && iconCode[i].isDay === isDay) {
                 return iconCode[i].iconUrl;
             } else if (!iconCode[i].hasOwnProperty('isDay')) {
                 return iconCode[i].iconUrl;
