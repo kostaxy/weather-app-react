@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/weather-app-react/static/css/main.815f2eac.css",
+    "main.js": "/weather-app-react/static/js/main.66815c62.js",
+    "static/media/sleet.svg": "/weather-app-react/static/media/sleet.758422e6d0e9565198f6920940cf823b.svg",
+    "static/media/thunderstorms-snow.svg": "/weather-app-react/static/media/thunderstorms-snow.8e010945f7e05b8d1120a846bbc392ae.svg",
+    "static/media/snow.svg": "/weather-app-react/static/media/snow.cb2fa27d3041178ae6d6e646e85da35c.svg",
+    "static/media/wind-snow.svg": "/weather-app-react/static/media/wind-snow.40015256a1c5aae3b2b6c70db57e5d0f.svg",
+    "static/media/thunderstorms-rain.svg": "/weather-app-react/static/media/thunderstorms-rain.2eb38f5ca5630a451dadb4d3f5e1da81.svg",
+    "static/media/hail.svg": "/weather-app-react/static/media/hail.1e6a60591d181485d0de32062fbf7adc.svg",
+    "static/media/rain.svg": "/weather-app-react/static/media/rain.e3975e06c02ae2b1aa5eefba3941d774.svg",
+    "static/media/drizzle.svg": "/weather-app-react/static/media/drizzle.caab99949a175b000ba854db4a3a0cd9.svg",
+    "static/media/overcast.svg": "/weather-app-react/static/media/overcast.eaa5b72cf88d2459ab142ae79254d990.svg",
+    "static/media/partly-cloudy-day.svg": "/weather-app-react/static/media/partly-cloudy-day.48f312ada72215b72ddfe2fa6f5160bd.svg",
+    "static/media/partly-cloudy-night.svg": "/weather-app-react/static/media/partly-cloudy-night.50e20f508ab1bfb8540cdacb3d7fd53f.svg",
+    "index.html": "/weather-app-react/index.html",
+    "static/media/fog.svg": "/weather-app-react/static/media/fog.6f98284d4521e4bdfa891d022cc641f1.svg",
+    "static/media/mist.svg": "/weather-app-react/static/media/mist.38983a7e4a4d70d4c976c507b54387df.svg",
+    "static/media/thunderstorms.svg": "/weather-app-react/static/media/thunderstorms.42046e523f7011f6fa4b9a1c45c4f3fb.svg",
+    "static/media/clear-day.svg": "/weather-app-react/static/media/clear-day.52ad623b4a34fe12c9023a95084835a0.svg",
+    "static/media/clear-night.svg": "/weather-app-react/static/media/clear-night.7218ed71ad83d70c17b081950df8966d.svg",
+    "static/media/cloudy.svg": "/weather-app-react/static/media/cloudy.baee6cea7eea5901bb48845300c43807.svg",
+    "main.815f2eac.css.map": "/weather-app-react/static/css/main.815f2eac.css.map",
+    "main.66815c62.js.map": "/weather-app-react/static/js/main.66815c62.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.815f2eac.css",
+    "static/js/main.66815c62.js"
+  ]
+}
