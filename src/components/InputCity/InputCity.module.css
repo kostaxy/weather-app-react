@@ -31,18 +31,3 @@ input:focus {
     white-space: pre;
 }
 
-
-@media (max-width: 800px) and (min-width: 500px) {
-    .Weather_input>input {
-        border: 0;
-        border-bottom: 1px solid #ccc;
-        font-size: 20px;
-        font-weight: 700;
-        height: 22px;
-        min-width: 1px;
-        padding: 0px 10px 0px 10px;
-        color: #000;
-        text-align: center;
-        transition: all 0.15s ease;
-    }
-}

@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import AncillaryCurrentInfo from '../AncillaryCurrentInfo/AncillaryCurrentInfo'
 import classes from './CurrentWeather.module.css'
 
-const CurrentWeather = ({API_DATA,isCelsius}) => {
+const CurrentWeather = ({API_DATA}) => {
+    
+    const isCelsius = useSelector(state => state.settingsReducer.isCelsius)
+
     return (
         <div className={classes.Weather_current_container}>
             <div>
@@ -21,7 +25,7 @@ const CurrentWeather = ({API_DATA,isCelsius}) => {
                         API_DATA.current.tempF
                 }°
             </div>
-            <AncillaryCurrentInfo API_DATA={API_DATA} isCelsius={isCelsius} />
+            <AncillaryCurrentInfo API_DATA={API_DATA}/>
         </div>
     )
 }

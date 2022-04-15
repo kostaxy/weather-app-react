@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { WiCloud, WiRaindrop, WiStrongWind } from 'weather-icons-react'
 import classes from './AncillaryCurrentInfo.module.css'
 
-const AncillaryCurrentInfo = ({API_DATA, isCelsius}) => {
+const AncillaryCurrentInfo = ({API_DATA}) => {
+    
+    const isCelsius = useSelector(state => state.settingsReducer.isCelsius)
+
     return (
         <div>
             <div className={classes.Current_ancillary}>

@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { getIconSrcByCode } from '../../UI/icons/weather/WeatherIcon'
 import classes from './ForecastWeatherItem.module.css'
 
-const ForecastWeatherItem = ({ response, isCelsius, day }) => {
+const ForecastWeatherItem = ({ response, day }) => {
+
+    const isCelsius = useSelector(state => state.settingsReducer.isCelsius)
+
 
     let API_DATA = {}
     response !== null

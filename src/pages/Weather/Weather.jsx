@@ -16,7 +16,7 @@ const Weather = () => {
 
     const city = useSelector(state => state.cityReducer.city)
 
-    const [isCelsius, setIsCelsius] = useState(true)   
+    // const [isCelsius, setIsCelsius] = useState(true)   
 
     const [response, setResponse] = useState(null)
 
@@ -96,9 +96,9 @@ const Weather = () => {
                     isCityNameСorrect(response, API_DATA, city)
                         ?
                         <div className={classes.Weather_data_container}>
-                            <CurrentWeather API_DATA={API_DATA} isCelsius={isCelsius} />
-                            <ForecastWeather response={response} isCelsius={isCelsius} />
-                            <ChooserDegrees isCelsius={isCelsius} setIsCelsius={setIsCelsius}></ChooserDegrees>
+                            <CurrentWeather API_DATA={API_DATA}/>
+                            <ForecastWeather response={response} />
+                            <ChooserDegrees></ChooserDegrees>
                         </div>
                         :
                         <div className={classes.Weather_data_container}>
