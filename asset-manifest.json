@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weather-app-react/static/css/main.e273b4da.css",
-    "main.js": "/weather-app-react/static/js/main.5b561afd.js",
+    "main.css": "/weather-app-react/static/css/main.97f113fd.css",
+    "main.js": "/weather-app-react/static/js/main.26a03b5a.js",
     "static/media/sleet.svg": "/weather-app-react/static/media/sleet.758422e6d0e9565198f6920940cf823b.svg",
     "static/media/thunderstorms-snow.svg": "/weather-app-react/static/media/thunderstorms-snow.8e010945f7e05b8d1120a846bbc392ae.svg",
     "static/media/snow.svg": "/weather-app-react/static/media/snow.cb2fa27d3041178ae6d6e646e85da35c.svg",
@@ -20,11 +20,11 @@
     "static/media/clear-day.svg": "/weather-app-react/static/media/clear-day.52ad623b4a34fe12c9023a95084835a0.svg",
     "static/media/clear-night.svg": "/weather-app-react/static/media/clear-night.7218ed71ad83d70c17b081950df8966d.svg",
     "static/media/cloudy.svg": "/weather-app-react/static/media/cloudy.baee6cea7eea5901bb48845300c43807.svg",
-    "main.e273b4da.css.map": "/weather-app-react/static/css/main.e273b4da.css.map",
-    "main.5b561afd.js.map": "/weather-app-react/static/js/main.5b561afd.js.map"
+    "main.97f113fd.css.map": "/weather-app-react/static/css/main.97f113fd.css.map",
+    "main.26a03b5a.js.map": "/weather-app-react/static/js/main.26a03b5a.js.map"
   },
   "entrypoints": [
-    "static/css/main.e273b4da.css",
-    "static/js/main.5b561afd.js"
+    "static/css/main.97f113fd.css",
+    "static/js/main.26a03b5a.js"
   ]
 }
