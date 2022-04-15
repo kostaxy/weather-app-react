@@ -1,0 +1,48 @@
+
+
+.Weather_input>input {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    font-size: 20px;
+    font-weight: 700;
+    height: 22px;
+    min-width: 1px;
+    max-width: 250px;
+    color: #000;
+    text-align: center;
+    transition: all 0.15s ease;
+}
+
+.Weather__input_text {
+    font-size: 20px;
+}
+
+.Weather_input>textarea:focus,
+input:focus {
+    outline: none
+}
+
+#hideElem {
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    opacity: 0;
+    z-index: -100;
+    white-space: pre;
+}
+
+
+@media (max-width: 800px) and (min-width: 500px) {
+    .Weather_input>input {
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        font-size: 20px;
+        font-weight: 700;
+        height: 22px;
+        min-width: 1px;
+        padding: 0px 10px 0px 10px;
+        color: #000;
+        text-align: center;
+        transition: all 0.15s ease;
+    }
+}

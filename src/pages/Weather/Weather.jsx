@@ -1,25 +1,22 @@
 import axios from 'axios'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { API } from '../../API/weatherApi'
 import classes from './Weather.module.css'
 import { getIconSrcByCode } from '../../UI/icons/weather/WeatherIcon'
 import ChooserDegrees from '../../components/ChooserDegrees/ChooserDegrees'
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather'
 import ForecastWeather from '../../components/ForecastWeather/ForecastWeather'
+import { useSelector } from 'react-redux'
+import InputCity from '../../components/InputCity/InputCity'
+import { isCityNameСorrect } from '../../functions/isCityNameCorrect'
+import WeatherDataNoInfo from '../../components/WeatherDataNoInfo/WeatherDataNoInfo'
 
 
 const Weather = () => {
 
-    const [city, setCity] = useState('');
-    const [isCelsius, setIsCelsius] = useState(true)
-    // const [response, setResponse] = useState(exampleJson)
+    const city = useSelector(state => state.cityReducer.city)
 
-    const [width, setWidth] = useState(0)
-    const span = useRef();
-
-    useEffect(() => {
-        setWidth(span.current.offsetWidth + 20);
-    }, [city]);
+    const [isCelsius, setIsCelsius] = useState(true)   
 
     const [response, setResponse] = useState(null)
 
@@ -68,17 +65,7 @@ const Weather = () => {
     // }
 
 
-    function handleChange(event) {
-        setCity(event.target.value)
-    }
-
-    const isCityNameСorrect = () => {
-        return (response !== null && (API_DATA.cityName.toUpperCase() === city.toUpperCase()))
-    }
-
-    // const showTestResponse = () => {
-    //     console.log(response)
-    // }
+    
 
     let API_DATA = {}
     response !== null ?
@@ -101,30 +88,12 @@ const Weather = () => {
 
     return (
         <div>
-            {/* <button onClick={showTestResponse}>check response</button> */}
             <div className={classes.Weather__container}>
 
-                <div className={classes.Weather_input}>
-
-                    <span className={classes.Weather__input_text}>Right now in </span>
-                    <span ref={span} id={classes.hideElem}>{city}</span>
-                    <input type="text" style={{ width }} autoFocus onChange={handleChange} />
-
-                    <span className={classes.Weather__input_text}>
-
-                        {
-                            (response !== null && (API_DATA.cityName.toUpperCase() === city.toUpperCase()))
-                                ?
-                                `, it's ${API_DATA.current.condition.toLowerCase()}`
-                                :
-                                `, none info :(`
-                        }
-                    </span>
-                </div>
-
+                <InputCity response={response} API_DATA={API_DATA}></InputCity>
 
                 {
-                    isCityNameСorrect()
+                    isCityNameСorrect(response, API_DATA, city)
                         ?
                         <div className={classes.Weather_data_container}>
                             <CurrentWeather API_DATA={API_DATA} isCelsius={isCelsius} />
@@ -133,9 +102,7 @@ const Weather = () => {
                         </div>
                         :
                         <div className={classes.Weather_data_container}>
-                            <div className={classes.Weather_data_no_info}>
-                                Enter city to get weather :)
-                            </div>
+                            <WeatherDataNoInfo/>
                         </div>
                 }
             </div>
